@@ -4,19 +4,6 @@
 
 const validationInput = document.getElementById("validation-input");
 
-// validationInput.addEventListener("blur", () => {
-//   const enteredValue = validationInput.value;
-//   const requiredLength = parseInt(validationInput.dataset.length);
-
-//   if (enteredValue.length === requiredLength) {
-//     validationInput.classList.add("valid");
-//     validationInput.classList.remove("invalid");
-//   } else {
-//     validationInput.classList.add("invalid");
-//     validationInput.classList.remove("valid");
-//   }
-// });
-
 validationInput.addEventListener("blur", () => {
   const enteredValue = validationInput.value;
   const requiredLength = parseInt(validationInput.dataset.length);
@@ -25,6 +12,15 @@ validationInput.addEventListener("blur", () => {
     validationInput.classList.add(addValid);
     validationInput.classList.remove(removeValid);
   };
+
+  //   if (enteredValue.length === requiredLength) {
+  //     validationInput.classList.add("valid");
+  //     validationInput.classList.remove("invalid");
+  //   } else {
+  //     validationInput.classList.add("invalid");
+  //     validationInput.classList.remove("valid");
+  //   }
+  // });
 
   if (enteredValue.length === requiredLength) {
     controlValidationClass("valid", "invalid");
