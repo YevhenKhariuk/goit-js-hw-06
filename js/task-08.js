@@ -6,29 +6,34 @@
 
 const loginForm = document.querySelector(".login-form");
 
-// Обробка відправлення форми form.login-form повинна відбуватися відповідно до події submit.
+// Додаємо слухач події "submit" до форми
 loginForm.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event) {
-  // Під час відправлення форми сторінка не повинна перезавантажуватися.
+  // Перешкоджаємо перезавантаженню сторінки при відправленні форми
   event.preventDefault();
 
-  // Якщо у формі є незаповнені поля, виводь alert з попередженням про те, що всі поля повинні бути заповнені.
-  const emailInput = loginForm.elements.email;
-  const passwordInput = loginForm.elements.password;
+  // Отримуємо посилання на поля електронної пошти та пароля через event.target
+  // const emailInput = loginForm.elements.email;
+  // const passwordInput = loginForm.elements.password;
 
-  if (emailInput.value === "" || passwordInput.value === "") {
+  const emailInput = event.target.elements.email;
+  const passwordInput = event.target.elements.password;
+
+  // Перевіряємо, чи всі поля заповнені
+  if (emailInput.value.trim() === "" || passwordInput.value.trim() === "") {
+    // Виводимо повідомлення, якщо поля не заповнені
     alert("Please fill in all fields");
     return;
   }
 
-  // об'єкт з даними форми
+  // Створюємо об'єкт з даними форми
   const loginData = {
-    email: emailInput.value,
-    password: passwordInput.value,
+    email: emailInput.value.trim(),
+    password: passwordInput.value.trim(),
   };
 
-  // Виведи об'єкт із введеними даними в консоль і очисти значення полів форми методом reset.
+  // Виводимо об'єкт з даними в консоль
   console.log(loginData);
-  loginForm.reset();
+  event.target.reset();
 }
