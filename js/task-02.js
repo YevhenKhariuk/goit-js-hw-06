@@ -13,10 +13,14 @@ const ingredients = [
 // Після чого, вставить усі <li> за одну операцію у список ul#ingredients.
 
 const ulIngredients = document.getElementById("ingredients");
+const liElements = [];
 
 for (let i = 0; i < ingredients.length; i++) {
   const li = document.createElement("li");
   li.textContent = ingredients[i];
   li.className = "item";
-  ulIngredients.appendChild(li);
+  // ulIngredients.appendChild(li);
+  liElements.push(li);
 }
+
+ulIngredients.append(...liElements);
